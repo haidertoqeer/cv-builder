@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premium CV Themes — Pack v2.2</title>
+  <link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="favicon/favicon-180.png">
+  <link rel="icon" href="favicon/favicon.ico">
+  <meta name="description"
+    content="Responsive CV/Resume templates with 16+ themes, form editing, PDF download, share links, and color customization." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- Left control panel (form-based) -->
+    <aside class="panel" aria-label="Controls">
+      <div class="panel-header">
+        <h2>Resume Builder</h2>
+        <div class="actions">
+          <button id="downloadPdf" class="btn btn-primary" type="button" title="Download PDF">PDF</button>
+          <button id="copyShare" class="btn" type="button" title="Copy shareable link">Share</button>
+          <button id="collapsePanel" class="btn icon-only" title="Collapse panel" aria-label="Collapse panel">☰</button>
+        </div>
+      </div>
+
+      <div class="row inline">
+        <label for="themeSel">Theme</label>
+        <select id="themeSel">
+          <optgroup label="Clean">
+            <option value="theme-modern">Modern Minimal</option>
+            <option value="theme-serif">Elegant Serif</option>
+            <option value="theme-mono">Monochrome</option>
+            <option value="theme-compact">Compact</option>
+            <option value="theme-grid">Grid Pro</option>
+            <option value="theme-card">Tech Card</option>
+          </optgroup>
+          <optgroup label="Accented">
+            <option value="theme-blue">Blue Contrast</option>
+            <option value="theme-sidebar">Sidebar Accent</option>
+            <option value="theme-banner">Creative Banner</option>
+            <option value="theme-timeline">Timeline</option>
+            <option value="theme-pastel">Soft Pastel</option>
+          </optgroup>
+          <optgroup label="Background Styles">
+            <option value="theme-glass">Glass Gradient BG</option>
+            <option value="theme-geo">Geometric BG</option>
+            <option value="theme-wave">Wave Split BG</option>
+            <option value="theme-photo">Photo Header</option>
+            <option value="theme-shapes">Premium Shapes</option>
+            <option value="theme-dark">Dark Invert</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <details open class="block">
+        <summary>Colors &amp; Contrast</summary>
+        <div class="row inline"><label>Accent</label><input type="color" id="color-accent" value="#2563eb" /></div>
+        <div class="row inline"><label>Text</label><input type="color" id="color-text" value="#111827" /></div>
+        <div class="row inline"><label>BG 1</label><input type="color" id="color-bg1" value="#eef2ff" /></div>
+        <div class="row inline"><label>BG 2</label><input type="color" id="color-bg2" value="#e0f2fe" /></div>
+        <div class="row">
+          <div id="paletteList" class="palette-list" aria-label="Suggested palettes"></div>
+        </div>
+        <div class="row two">
+          <button id="resetColors" class="btn" type="button">Reset Colors</button>
+          <small id="copyHint" class="muted" role="status" aria-live="polite"></small>
+        </div>
+      </details>
+
+      <details open class="block">
+        <summary>Basics</summary>
+        <div class="row inline"><label>Name</label><input id="inp-name" /></div>
+        <div class="row inline"><label>Headline</label><input id="inp-headline" /></div>
+        <div class="row inline"><label>Email</label><input id="inp-email" /></div>
+        <div class="row inline"><label>Phone</label><input id="inp-phone" /></div>
+        <div class="row inline"><label>Location</label><input id="inp-location" /></div>
+        <div class="row inline"><label>Website</label><input id="inp-website" /></div>
+        <div class="row inline"><label>LinkedIn</label><input id="inp-linkedin" /></div>
+        <div class="row"><label>Summary</label><textarea id="inp-summary" rows="3"></textarea></div>
+        <div class="row inline"><label>Skills</label><input id="inp-skills" placeholder="React, TypeScript, UX, ..." />
+        </div>
+        <div class="row inline"><label>Photo URL</label><input id="inp-photo" placeholder="https://..." /></div>
+      </details>
+
+      <details open class="block" id="expBlock">
+        <summary>Experience</summary>
+        <div id="expList"></div>
+        <button id="addExp" class="btn btn-outline small" type="button">+ Add Experience</button>
+      </details>
+
+      <details class="block" open>
+        <summary>Projects</summary>
+        <div id="projList"></div>
+        <button id="addProj" class="btn btn-outline small" type="button">+ Add Project</button>
+      </details>
+
+      <details class="block" open>
+        <summary>Education</summary>
+        <div id="eduList"></div>
+        <button id="addEdu" class="btn btn-outline small" type="button">+ Add Education</button>
+      </details>
+
+      <details class="block" open>
+        <summary>Certifications</summary>
+        <div class="row inline"><label>Certs</label><input id="inp-certs" placeholder="AWS Cloud Practitioner, ..." />
+        </div>
+      </details>
+
+      <div class="row two">
+        <button id="resetData" class="btn" type="button">Reset Sample</button>
+        <button id="exportJson" class="btn btn-outline" type="button">Export JSON</button>
+      </div>
+    </aside>
+
+    <!-- Right preview -->
+    <main class="preview">
+      <div class="toolbar">
+        <div class="left hint">Responsive · 16+ Themes · Print-ready · Smart Page Breaks</div>
+        <div class="right" style="visibility: hidden">
+          <button class="btn" id="zoomOut" title="Zoom out">−</button>
+          <span id="zoomLabel" class="muted">100%</span>
+          <button class="btn" id="zoomIn" title="Zoom in">+</button>
+        </div>
+      </div>
+
+      <section class="surface" id="surface">
+        <article id="resumeRoot" class="theme-modern">
+          <!-- Background layers for BG themes -->
+          <div class="bg-layer" aria-hidden="true"></div>
+
+          <!-- A4 page -->
+          <div class="page" id="page">
+            <div class="resume avoid-break" id="resume">
+              <header class="header avoid-break">
+                <div class="header-row">
+                  <img id="avatar" class="avatar" alt="" />
+                  <div class="header-text">
+                    <h1 id="nameView">Alexandra Khan</h1>
+                    <div id="headlineView" class="sub">Senior Frontend Engineer · React / TypeScript · UI Systems</div>
+                    <div class="contacts avoid-break">
+                      <a id="emailView" href="mailto:alex@example.com">alex@example.com</a>
+                      <span>•</span>
+                      <a id="phoneView" href="tel:+923001112223">+92 300 111 2223</a>
+                      <span>•</span>
+                      <span id="locationView">Karachi, PK</span>
+                      <span>•</span>
+                      <a id="websiteView" href="https://alex.dev" target="_blank" rel="noopener">alex.dev</a>
+                      <span>•</span>
+                      <a id="linkedinView" href="https://linkedin.com/in/alex" target="_blank"
+                        rel="noopener">linkedin.com/in/alex</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="rule avoid-break"></div>
+              </header>
+
+              <section class="row-flex">
+                <div class="col">
+                  <div class="section-title">Summary</div>
+                  <p id="summaryView">Frontend lead with 7+ years building accessible, high‑performance design systems
+                    and B2B dashboards. Led UI for products used by 1M+ users. Passionate about DX, a11y, and meticulous
+                    UI polish.</p>
+                </div>
+                <div class="col">
+                  <div class="section-title">Core Skills</div>
+                  <div id="skillsView" class="skills avoid-break"></div>
+                </div>
+              </section>
+
+              <section class="section">
+                <div class="section-title">Experience</div>
+                <div class="jobs" id="experienceView"></div>
+              </section>
+
+              <section class="row-flex">
+                <div class="col">
+                  <div class="section-title">Projects</div>
+                  <div id="projectsView"></div>
+                </div>
+                <div class="col">
+                  <div class="section-title">Education</div>
+                  <div id="educationView"></div>
+                </div>
+              </section>
+
+              <section class="section avoid-break">
+                <div class="section-title">Certifications</div>
+                <div id="certsView" class="avoid-break"></div>
+              </section>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast (copy/share, etc.) -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- html2pdf for client-side PDF (fallback to print) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

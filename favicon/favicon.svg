@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 256) rotate(90) scale(256)">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5"/>
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="url(#g)"/>
+  <circle cx="168" cy="152" r="66" fill="white" opacity="0.12"/>
+  <!-- 8-point spark -->
+  <g transform="translate(320, 192)" filter="url(#blur)">
+    <g transform="translate(-30,-30)" fill="white">
+      <path d="M30 0 L36 18 L54 24 L36 30 L30 48 L24 30 L6 24 L24 18 Z" />
+    </g>
+  </g>
+</svg>

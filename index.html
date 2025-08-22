@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CV Spark — Update CV Fast, Switch Roles Confidently</title>
+<meta name="description" content="Ali Shah's success story: quickly update your CV, switch jobs, and grow faster. Responsive one-pager with hero, success story, how it works, impact, and CTA." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="favicon/favicon-180.png">
+  <link rel="icon" href="favicon/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Light palette */
+  --bg: #f8fafc;          /* page background */
+  --card: #ffffff;        /* cards */
+  --text: #0f172a;        /* primary text (slate-900) */
+  --muted: #475569;       /* slate-600 */
+  --accent: #2563eb;      /* blue-600 */
+  --accent-2: #22c55e;    /* green-500 */
+  --stroke: #e5e7eb;      /* gray-200 borders */
+  --chip: #f1f5f9;        /* slate-100 */
+  --chip-b: #e2e8f0;      /* slate-200 */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased
+}
+.container{max-width:1120px;margin:0 auto;padding:0 16px}
+a{color:inherit;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;
+  border:1px solid var(--stroke);border-radius:12px;background:var(--card);
+  color:var(--text);font-weight:600;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,23,42,.08)}
+.btn.small{padding:8px 12px;font-size:14px;border-radius:10px}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-ghost{background:var(--card);border-color:var(--stroke)}
+
+.site-header{
+  position:sticky;top:0;z-index:20;background:rgba(255,255,255,.7);
+  backdrop-filter:saturate(1.15) blur(10px);border-bottom:1px solid var(--stroke)
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.brand{display:flex;align-items:center;font-weight:800;font-family:'Poppins',sans-serif;letter-spacing:.2px}
+.brand .logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#60a5fa);display:inline-block;margin-right:10px;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.menu{display:flex;gap:16px;align-items:center}
+.menu a{color:var(--muted)}
+.menu a:hover{color:var(--text)}
+.hamburger{width:40px;height:40px;border:1px solid var(--stroke);border-radius:10px;background:var(--card);display:none;align-items:center;justify-content:center;gap:4px;flex-direction:column}
+.hamburger span{display:block;width:18px;height:2px;background:var(--muted)}
+
+.hero{
+  position:relative;overflow:hidden;border-bottom:1px solid var(--stroke);
+  background:radial-gradient(1200px 300px at 50% -50%, #e0f2fe 0%, transparent 60%);
+}
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;padding:56px 0 42px}
+.hero-copy h1{font-family:'Poppins',sans-serif;font-weight:800;font-size:42px;line-height:1.15;margin:0 0 12px;letter-spacing:.1px}
+.hero-copy .lead{color:var(--muted);max-width:58ch}
+.accent{color:var(--accent)}
+.cta-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.trust{margin-top:12px}
+.chip{display:inline-block;background:var(--chip);border:1px solid var(--chip-b);color:#0f172a;padding:6px 10px;border-radius:999px;font-size:12px;margin:6px 8px 0 0}
+
+.hero-card{
+  background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:16px;
+  box-shadow:0 12px 28px rgba(2,6,23,.06)
+}
+.card-top{display:flex;gap:12px;align-items:center}
+.avatar{width:46px;height:46px;border-radius:12px;
+  background:linear-gradient(135deg,#2563eb,#22c55e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.meta .name{font-weight:700}
+.meta .role{color:var(--muted);font-size:14px}
+.bullets{margin:14px 0 8px 18px}
+.inline-link{color:#2563eb;text-decoration:underline}
+
+/* Bulb / blurry glows */
+.glows{position:absolute;inset:-10% -5% auto -5%;height:420px;pointer-events:none;filter:blur(60px)}
+.glow{position:absolute;border-radius:50%}
+.g1{width:360px;height:360px;left:-60px;top:40px;background:rgba(96,165,250,.45)}   /* blue */
+.g2{width:320px;height:320px;right:-40px;top:-40px;background:rgba(244,114,182,.35)} /* pink */
+.g3{width:280px;height:280px;left:40%;top:180px;background:rgba(34,197,94,.28)}      /* green */
+@media (prefers-reduced-motion:no-preference){
+  .g1{animation:float 10s ease-in-out infinite}
+  .g2{animation:float 12s ease-in-out infinite reverse}
+  .g3{animation:float 14s ease-in-out infinite}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) translateX(0)}
+  50%{transform:translateY(-14px) translateX(8px)}
+}
+
+/* Sections */
+.section{padding:64px 0;border-top:1px solid var(--stroke);background:linear-gradient(180deg,#fff, #fff0 40%, #fff)}
+.section h2{font-family:'Poppins',sans-serif;font-weight:700;margin:0 0 10px}
+.grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+
+.timeline{border-left:3px solid #e2e8f0;margin-top:12px}
+.t-item{position:relative;padding-left:16px;margin:18px 0}
+.t-dot{position:absolute;left:-9px;top:.45em;width:14px;height:14px;border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#60a5fa);box-shadow:0 0 0 4px #ffffff}
+.t-content h3{margin:0 0 4px;font-weight:700}
+.t-content p{margin:0;color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px}
+.stat{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:16px;text-align:center;box-shadow:0 6px 18px rgba(2,6,23,.04)}
+.num{font-family:'Poppins',sans-serif;font-size:36px;font-weight:800;color:#0b1324}
+.label{color:var(--muted)}
+.note{grid-column:1/-1;color:#64748b;margin-top:6px;font-size:13px}
+
+/* How steps */
+.how .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.step{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,.04)}
+.icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#60a5fa);
+  color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+
+/* Impact */
+.impact .panel.demo{background:var(--card);border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 10px 28px rgba(2,6,23,.06)}
+.demo-bar{display:flex;gap:6px;align-items:center;padding:12px;border-bottom:1px solid var(--stroke);background:linear-gradient(180deg,#f8fafc,#eef2ff)}
+.demo-bar .dot{width:8px;height:8px;border-radius:50%;background:#cbd5e1}
+.demo-body{padding:16px}
+.demo-title{font-weight:700;margin-bottom:6px}
+.demo-line{height:8px;background:#e5e7eb;border-radius:999px;margin:10px 0}
+.demo-line.w80{width:80%}
+.demo-line.w60{width:60%}
+.demo-chip{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;color:#0f172a;padding:6px 10px;border-radius:999px;font-size:12px;margin:6px 8px 0 0}
+
+/* CTA */
+.cta{padding:72px 0}
+.cta-inner{
+  background:linear-gradient(135deg, rgba(37,99,235,.10), rgba(34,197,94,.10));
+  border:1px solid var(--stroke);border-radius:20px;padding:32px;text-align:center;
+  box-shadow:0 12px 30px rgba(2,6,23,.06)
+}
+.cta h2{margin:0 0 6px}
+.cta p{color:var(--muted)}
+.cta .cta-row{justify-content:center;margin-top:16px}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--stroke);padding:24px 0 36px;background:#fff}
+.footer-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.foot-links a{margin-left:14px;color:var(--muted)}
+.foot-links a:hover{color:var(--text)}
+.copy{justify-self:end;color:#64748b}
+.footer-inner .brand{color:#334155}
+
+/* Responsive */
+@media (max-width: 980px){
+  .menu{display:none}
+  .hamburger{display:inline-flex}
+  .hero-inner{grid-template-columns:1fr;gap:24px}
+  .grid-2{grid-template-columns:1fr;gap:18px}
+  .how .steps{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .hero-copy h1{font-size:36px}
+}
+@media (max-width: 640px){
+  .how .steps{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr;gap:10px;text-align:center}
+  .copy{justify-self:center}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#"><span class="logo-dot"></span>CV Spark</a>
+    <nav class="menu">
+      <a href="#story">Success</a>
+      <a href="#how">How it works</a>
+      <a href="#impact">Impact</a>
+      <a href="#cta" class="btn small">Get Started</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <!-- Blurry bulbs -->
+  <div class="glows" aria-hidden="true">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <div class="glow g3"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>Update your CV in minutes.<br><span class="accent">Switch jobs with confidence.</span></h1>
+      <p class="lead">Ali Shah used our builder to refresh his resume for a role change — from Support to Product — and applied with impact using one-click PDF & share links.</p>
+      <div class="cta-row">
+        <a href="#cta" class="btn btn-primary">Start Free</a>
+        <a href="#story" class="btn btn-ghost">Read Ali’s Story</a>
+      </div>
+      <div class="trust">
+        <span class="chip">ATS-friendly</span>
+        <span class="chip">12+ premium themes</span>
+        <span class="chip">One-click PDF</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="card-top">
+        <div class="avatar">AS</div>
+        <div class="meta">
+          <div class="name">Ali Shah</div>
+          <div class="role">Associate Product Manager</div>
+        </div>
+      </div>
+      <ul class="bullets">
+        <li><strong>3×</strong> more callbacks after CV refresh</li>
+        <li><strong>70% faster</strong> Quick-Apply flow</li>
+        <li><strong>+45%</strong> salary increase</li>
+      </ul>
+      <a href="#how" class="inline-link">See how it works →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Success Story -->
+<section class="section story" id="story">
+  <div class="container grid-2">
+    <div>
+      <h2>Ali Shah’s journey: Support ➝ Product</h2>
+      <p>Ali wanted to pivot into product without a long rewrite. He used our themes to highlight impact (metrics first), aligned keywords for ATS, and exported a consistent PDF for every role.</p>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-dot"></div>
+          <div class="t-content">
+            <h3>Rewrite in under 30 minutes</h3>
+            <p>Swapped headline, reordered experience, and added quantified outcomes using badges.</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-dot"></div>
+          <div class="t-content">
+            <h3>Tailor with one click</h3>
+            <p>Used theme & color presets to match company brand vibes — staying clean for ATS.</p>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-dot"></div>
+          <div class="t-content">
+            <h3>Quick-Apply, real impact</h3>
+            <p>Instant PDF + share link. Recruiters saw the same polished layout every time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="3">0</div><div class="label">× more  <br> callbacks</div></div>
+      <div class="stat"><div class="num" data-count="70">0</div><div class="label">% faster <br> apply</div></div>
+      <div class="stat"><div class="num" data-count="45">0</div><div class="label">% salary <br> uplift</div></div>
+      <!-- <div class="note">*Example outcomes shared with permission from Ali Shah.</div> -->
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section how" id="how">
+  <div class="container">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="icon">1</div>
+        <h3>Update once</h3>
+        <p>Change name, headline, skills, projects — all from the left panel.</p>
+      </div>
+      <div class="step">
+        <div class="icon">2</div>
+        <h3>Pick theme & colors</h3>
+        <p>12+ beautiful layouts and curated palettes that print exactly like screen.</p>
+      </div>
+      <div class="step">
+        <div class="icon">3</div>
+        <h3>One-click PDF</h3>
+        <p>Smart page breaks, ATS-safe typography, and crisp export at 3× scale.</p>
+      </div>
+      <div class="step">
+        <div class="icon">4</div>
+        <h3>Quick-Apply impact</h3>
+        <p>Use your share link for recruiters — consistent design, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Impact / Benefits -->
+<section class="section impact" id="impact">
+  <div class="container grid-2">
+    <div>
+      <h2>Quick-Apply that actually converts</h2>
+      <ul class="checklist">
+        <li>Pixel-perfect PDFs — no layout shifts</li>
+        <li>ATS-friendly content structure</li>
+        <li>Clean backgrounds with subtle shapes</li>
+        <li>Light theme, excellent readability</li>
+        <li>Shareable URL with embedded data</li>
+      </ul>
+    </div>
+    <div class="panel demo" aria-label="CV preview mock">
+      <div class="demo-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <div class="demo-body">
+        <div class="demo-title">Ali_Shah_Resume.pdf</div>
+        <div class="demo-line"></div>
+        <div class="demo-line w80"></div>
+        <div class="demo-line w60"></div>
+        <div class="demo-chip">Product Metrics</div>
+        <div class="demo-chip">Stakeholder Communication</div>
+        <div class="demo-chip">Roadmapping</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="container cta-inner">
+    <h2>Ready to switch roles like Ali Shah?</h2>
+    <p>Start free, pick a theme, and export a perfect PDF in minutes.</p>
+    <div class="cta-row">
+      <a href="./cvbuilder.html" class="btn btn-primary">Open CV Builder</a>
+      <a href="#how" class="btn btn-ghost">See steps</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="brand"><span class="logo-dot"></span>CV Spark</div>
+    <div class="foot-links">
+      <a href="#story">Success</a>
+      <a href="#how">How it works</a>
+      <a href="#impact">Impact</a>
+    </div>
+    <div class="copy">© <span id="year"></span> CV Spark. Made for fast career growth.</div>
+  </div>
+</footer>
+
+<script>
+const year = document.getElementById('year');
+const hamburger = document.getElementById('hamburger');
+year.textContent = new Date().getFullYear();
+
+// simple mobile menu toggle
+hamburger.addEventListener('click', () => {
+  const nav = document.querySelector('.menu');
+  const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', String(!expanded));
+  nav.style.display = expanded ? 'none' : 'flex';
+});
+
+// count-up for stats
+const counters = document.querySelectorAll('.num[data-count]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const end = parseInt(el.getAttribute('data-count'), 10);
+    const dur = 900;
+    const startTime = performance.now();
+    function tick(now){
+      const p = Math.min(1, (now - startTime) / dur);
+      el.textContent = Math.round(end * p);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    observer.unobserve(el);
+  });
+}, { threshold: 0.4 });
+counters.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
